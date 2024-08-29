@@ -20,7 +20,8 @@ model Leituras {
   measure_value      Int
   image_url          String
   has_confirmed      Boolean  @default(false)
-  measure_datetime   DateTime @default(now())
+  measure_datetime   DateTime
+  createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 }
 

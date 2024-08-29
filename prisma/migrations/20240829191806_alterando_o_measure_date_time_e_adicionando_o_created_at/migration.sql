@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Leituras" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ALTER COLUMN "measure_datetime" DROP DEFAULT;
