@@ -15,7 +15,7 @@ datasource db {
 
 model Leituras {
   measure_uuid       String   @id @default(uuid()) @unique
-  customer_code      String   @db.VarChar(255) @unique
+  customer_code      String   @db.VarChar(255)
   measure_type       String   
   measure_value      Int
   image_url          String

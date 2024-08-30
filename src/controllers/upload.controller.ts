@@ -6,7 +6,13 @@ async function uploadImage(req: Request, res: Response) {
 
   const upload = await uploadService.uploadImage(body);
 
-  res.status(201).send(upload);
+  const response = {
+    image_url: upload.image_url,
+    measure_value : upload.measure_value,
+    measure_uuid: upload.measure_uuid
+    }
+
+  res.status(200).send(response);
 }
 
 export const uploadController = {
