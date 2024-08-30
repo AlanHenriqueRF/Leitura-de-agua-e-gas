@@ -1,18 +1,14 @@
 import { Router } from 'express';
 import { validateParams, validateQuery } from '../middleware/validation.middleware';
 import { customerSchema } from '../schemas/customer.schema';
+import { customerController } from '../controllers/customer.controller';
 
 const customerRouter = Router();
 
-customerRouter.get(
-  '/:customerCode/list',
+customerRouter.get('/:customerCode/list',
   validateParams(customerSchema.customerParamsSchema),
   validateQuery(customerSchema.customerQuerySchema),
-  (req, res) => {
-    console.log(req.params);
-    console.log(req.query);
-    res.send('aiaiai');
-  },
+  customerController.getList
 );
 
 export default customerRouter;

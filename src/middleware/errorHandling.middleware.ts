@@ -16,12 +16,12 @@ export function handleApplicationErrors(
     return res.status(400).send(objError);
   }
 
-  if (err.name === 'DOUBLE_REPORT' || err.name === 'CONFIRMATION_DUPLICATE') {
-    return res.status(409).send(objError)
-  }
-
   if (err.name === 'MEASURE_NOT_FOUND') {
     return res.status(404).send(objError)
+  }
+
+  if (err.name === 'DOUBLE_REPORT' || err.name === 'CONFIRMATION_DUPLICATE') {
+    return res.status(409).send(objError)
   }
 
   console.log(err)
