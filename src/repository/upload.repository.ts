@@ -11,7 +11,6 @@ async function findUploadByImage(image: string) {
   });
 }
 
-
 export const uploadRpository = {
   createUpload,
   findUploadByImage,
