@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { ObjectSchema } from 'joi';
 import { invalidDataError } from '../errors/invalidData.error';
+import { invalidTypeError } from '@/errors/invalidType.error';
 
 export function validateBody<T>(schema: ObjectSchema<T>): ValidationMiddleware {
   return validate(schema, 'body');
@@ -10,8 +11,8 @@ export function validateParams<T>(schema: ObjectSchema<T>): ValidationMiddleware
   return validate(schema, 'params');
 }
 
-export function validateQuery<T>(schema: ObjectSchema<T>): ValidationMiddleware{
-  return validate(schema, 'query')
+export function validateQuery<T>(schema: ObjectSchema<T>): ValidationMiddleware {
+  return validate(schema, 'query');
 }
 
 function validate(schema: ObjectSchema, type: 'body' | 'params' | 'query') {
@@ -23,6 +24,9 @@ function validate(schema: ObjectSchema, type: 'body' | 'params' | 'query') {
     if (!error) {
       next();
     } else {
+      if (type === 'query') {
+        throw invalidTypeError();
+      }
       let errorMessage = '';
       error.details.forEach((d) => (errorMessage += d.message + ' '));
       throw invalidDataError(errorMessage);

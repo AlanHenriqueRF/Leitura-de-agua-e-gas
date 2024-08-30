@@ -16,7 +16,7 @@ export type CustomerParamsType = {
 
 export type CustomerQueryType = {
   measure_type?: 'Water' | 'Gas';
-}
+};
 
 export type MimeType = 'image/jpeg' | 'image/png' | 'image/gif' | 'application/pdf' | 'audio/mpeg' | 'video/mp4';
 

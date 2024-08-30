@@ -12,7 +12,7 @@ export function handleApplicationErrors(
     error_description: err.message,
   }
 
-  if (err.name === 'INVALID_DATA') {
+  if (err.name === 'INVALID_DATA' || err.name === 'INVALID_TYPE') {
     return res.status(400).send(objError);
   }
 
