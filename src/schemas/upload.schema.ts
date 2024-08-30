@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { UploadImage } from '@/protocols';
+import { UploadImage } from '../protocols';
 
 export const uploadSchema = Joi.object<UploadImage>({
   image: Joi.string().base64().required(),

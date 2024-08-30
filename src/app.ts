@@ -2,9 +2,9 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 import bodyParser from 'body-parser';
-import { handleApplicationErrors } from '@/middleware/errorHandling.middleware';
-import { loadEnv, connectDb, disconnectDB } from '@/config';
-import indexRouter from '@/router/index.routes';
+import { handleApplicationErrors } from './middleware/errorHandling.middleware';
+import { loadEnv, connectDb, disconnectDB } from './config';
+import indexRouter from './router/index.routes';
 
 loadEnv();
 

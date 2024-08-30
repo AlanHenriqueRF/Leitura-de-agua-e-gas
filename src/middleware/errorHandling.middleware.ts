@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ApplicationError, RequestError } from '@/protocols';
+import { ApplicationError, RequestError } from '../protocols';
 
 export function handleApplicationErrors(
   err: RequestError | ApplicationError | Error,
@@ -21,7 +21,7 @@ export function handleApplicationErrors(
       error_description: err.message,
     })
   }
-
+  
   res.status(500).send({
     error: 'InternalServerError',
     message: 'Internal Server Error',

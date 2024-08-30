@@ -4,9 +4,9 @@
   "main": "dist/server.js",
   "scripts": {
     "migration:run": "prisma migrate deploy",
-    "migration:generate": "npm run dev:load-envs prisma migrate dev",
+    "migration:dev": "npm run dev:load-envs prisma migrate dev",
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/server.js",
+    "start": "node -r tsconfig-paths/register dist/server.js",
     "lint": "eslint .",
     "lint:staged": "lint-staged",
     "dev:load-envs": "dotenv -e .env.development",
@@ -25,7 +25,9 @@
     "dotenv-expand": "^11.0.6",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
+    "install": "^0.13.0",
     "joi": "^17.13.3",
+    "npm": "^10.8.3",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

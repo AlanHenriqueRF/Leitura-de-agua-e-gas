@@ -1,5 +1,5 @@
 import { Prisma } from '@prisma/client';
-import { prisma } from '@/config';
+import { prisma } from '../config';
 
 async function createUpload(data: Prisma.LeiturasCreateInput) {
   return prisma.leituras.create({ data });

@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { MimeType } from '@/protocols';
+import { MimeType } from '../protocols';
 
 async function getMeasureValue(image: string, prompt: string) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { uploadService } from '@/service/upload.service';
+import { uploadService } from '../service/upload.service';
 
 async function uploadImage(req: Request, res: Response) {
   const body = req.body;

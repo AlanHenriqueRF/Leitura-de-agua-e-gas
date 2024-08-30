@@ -1,0 +1,35 @@
+services:
+  app:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    command: sh -c "npm run migration:dev && npm run start" 
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
+    networks:
+      - backend
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  postgres:
+    image: postgres
+    command: ["postgres", "-c", "log_statement=all"]
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:
