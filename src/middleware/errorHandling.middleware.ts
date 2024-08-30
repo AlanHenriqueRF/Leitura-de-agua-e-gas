@@ -7,20 +7,24 @@ export function handleApplicationErrors(
   res: Response,
   next: NextFunction,
 ) {
+  const objError = {
+    error_code: err.name,
+    error_description: err.message,
+  }
 
   if (err.name === 'INVALID_DATA') {
-    return res.status(400).send({
-      error_code: err.name,
-      error_description: err.message,
-    });
+    return res.status(400).send(objError);
   }
 
-  if (err.name === 'DOUBLE_REPORT') {
-    return res.status(409).send({
-      error_code: err.name,
-      error_description: err.message,
-    })
+  if (err.name === 'DOUBLE_REPORT' || err.name === 'CONFIRMATION_DUPLICATE') {
+    return res.status(409).send(objError)
   }
+
+  if (err.name === 'MEASURE_NOT_FOUND') {
+    return res.status(404).send(objError)
+  }
+
+  console.log(err)
   
   res.status(500).send({
     error: 'InternalServerError',

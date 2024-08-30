@@ -18,7 +18,7 @@ async function uploadImage(body: UploadImage) {
 
   const data: Prisma.LeiturasCreateInput = {
     customer_code: body.customer_code,
-    measure_type: body.measure_type,
+    measure_type: body.measure_type.toLowerCase(),
     measure_value: parseInt(measure_value) ? parseInt(measure_value) : 0,
     image_url: 'data:image/jpeg;base64,' + body.image,
     measure_datetime: body.measure_datetime,

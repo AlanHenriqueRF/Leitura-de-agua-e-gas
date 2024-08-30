@@ -5,6 +5,11 @@ export type UploadImage = {
   measure_type: 'Water' | 'Gas' | 'water' | 'gas' | 'WATER' | 'GAS';
 };
 
+export type ConfirmType = {
+  measure_uuid: string;
+  confirmed_value: number;
+};
+
 export type MimeType = 'image/jpeg' | 'image/png' | 'image/gif' | 'application/pdf' | 'audio/mpeg' | 'video/mp4';
 
 export type ApplicationError = {
