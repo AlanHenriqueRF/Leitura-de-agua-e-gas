@@ -23,8 +23,6 @@ export function handleApplicationErrors(
   if (err.name === 'DOUBLE_REPORT' || err.name === 'CONFIRMATION_DUPLICATE') {
     return res.status(409).send(objError)
   }
-
-  console.log(err)
   
   res.status(500).send({
     error: 'InternalServerError',

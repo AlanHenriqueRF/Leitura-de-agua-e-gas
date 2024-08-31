@@ -5,7 +5,7 @@ async function createUpload(data: Prisma.LeiturasCreateInput) {
   return prisma.leituras.create({ data });
 }
 
-async function findUploadByImageAndDate(client: string, datetimeInput: Date | string, image: string) {
+async function findUploadByImageAndDate(measure_type: string, datetimeInput: Date | string) {
   const datetime = new Date(datetimeInput);
 
   const startOfMonth = new Date(datetime.getFullYear(), datetime.getMonth(), 1);
@@ -13,8 +13,7 @@ async function findUploadByImageAndDate(client: string, datetimeInput: Date | st
 
   return prisma.leituras.findFirst({
     where: {
-      customer_code: client,
-      image_url: image,
+      measure_type,
       measure_datetime: {
         gte: startOfMonth,
         lt: endOfMonth,

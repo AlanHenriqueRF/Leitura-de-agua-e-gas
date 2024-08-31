@@ -32,3 +32,8 @@ export type RequestError = {
   name: string;
   message: string;
 };
+
+export type ImageObject = {
+  outputPath: string;
+  outputFilename: string;
+};

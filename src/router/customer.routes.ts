@@ -5,10 +5,11 @@ import { customerController } from '../controllers/customer.controller';
 
 const customerRouter = Router();
 
-customerRouter.get('/:customerCode/list',
+customerRouter.get(
+  '/:customerCode/list',
   validateParams(customerSchema.customerParamsSchema),
   validateQuery(customerSchema.customerQuerySchema),
-  customerController.getList
+  customerController.getList,
 );
 
 export default customerRouter;
